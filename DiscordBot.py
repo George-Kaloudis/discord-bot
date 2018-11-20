@@ -1,9 +1,14 @@
 import discord
 from discord.ext.commands import Bot
 from discord.ext import commands
-#from config import config
+import os
 import asyncio
 import time
+from boto.s3.connection import S3Connection
+
+
+token = S3Connection(os.environ['S3_KEY'], os.environ['S3_SECRET'])
+
 
 Client = discord.Client()
 client= commands.Bot(command_prefix = "!")
@@ -91,5 +96,5 @@ async def on_message(message):
             clog("Cannot Timeout the Admin")
         else:
             clog("You dont have permission to timeout.")
-#token = config['token']
-client.run("NDA4Mjc2OTIzOTg3MjYzNDg4.DVNtgg.FwtSNTkH6Y42nXqwv4UzUuXXKhA")
+token = os.environ['TOKEN']
+client.run(token)
