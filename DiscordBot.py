@@ -1,7 +1,7 @@
 import discord
 from discord.ext.commands import Bot
 from discord.ext import commands
-from config import config
+#from config import config
 import asyncio
 import time
 
@@ -91,5 +91,5 @@ async def on_message(message):
             clog("Cannot Timeout the Admin")
         else:
             clog("You dont have permission to timeout.")
-token = config['token']
-client.run(token)
+#token = config['token']
+client.run("NDA4Mjc2OTIzOTg3MjYzNDg4.DVNtgg.FwtSNTkH6Y42nXqwv4UzUuXXKhA")
