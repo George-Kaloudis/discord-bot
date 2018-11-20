@@ -4,10 +4,6 @@ from discord.ext import commands
 import os
 import asyncio
 import time
-from boto.s3.connection import S3Connection
-
-
-token = S3Connection(os.environ['S3_KEY'], os.environ['S3_SECRET'])
 
 
 Client = discord.Client()
