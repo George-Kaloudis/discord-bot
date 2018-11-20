@@ -91,4 +91,5 @@ async def on_message(message):
             clog("Cannot Timeout the Admin")
         else:
             clog("You dont have permission to timeout.")
-client.run("TOKEN")
+token = config['token']
+client.run(token)
