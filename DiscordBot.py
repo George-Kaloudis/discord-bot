@@ -115,6 +115,14 @@ async def on_ready():
     clog('------')
     await client.change_presence(game=discord.Game(name="with someone's dick", type=1))
 
+    
+@client.command()
+async def square(number):
+    squared_value = int(number) * int(number)
+    await client.say(str(number) + " squared is " + str(squared_value))
+
+    
+    
 @client.event
 async def on_message(message):
 
