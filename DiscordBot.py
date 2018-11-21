@@ -4,7 +4,7 @@ from discord.ext import commands
 
 Client = discord.Client()
 client= commands.Bot(command_prefix = "!")
-bc = Bot(command_prefix = "!")
+
 def clog(*args):
     print(*args)
     log = open("clog.txt", "a")
@@ -44,16 +44,7 @@ async def on_ready():
     clog('------')
     await client.change_presence(game=discord.Game(name="with someone's dick", type=1))
 
-    
-@bc.command()
-async def square(number):
-    squared_value = int(number) * int(number)
-    clog("Test True")
-    await bc.send_message(number.channel, str(number) + " squared is " + str(squared_value))
 
-
-    
-    
 @client.event
 async def on_message(message):
 
