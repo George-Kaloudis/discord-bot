@@ -25,6 +25,7 @@ async def on_ready():
     clog(client.user.name)
     clog(client.user.id)
     clog('------')
+    await bot.change_presence(game=discord.Game(name="Test", type=1))
 
 @client.event
 async def on_message(message):
