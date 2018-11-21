@@ -22,7 +22,7 @@ async def gameChanger():
         for user in client.members:
             if user.status != discord.Status.offline:
                 await client.change_presence(game=discord.Game(name="with " + user + "'s dick" , type=1))
-    await asyncio.sleep(600)
+    await asyncio.sleep(10)
     
 @client.event
 async def on_ready():
