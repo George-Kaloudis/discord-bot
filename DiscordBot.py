@@ -1,4 +1,4 @@
-import discord, os, asyncio, time, datetime
+import discord, os, asyncio, time
 from discord.ext.commands import Bot
 from discord.ext import commands
 
