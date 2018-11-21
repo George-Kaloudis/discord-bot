@@ -1,4 +1,4 @@
-import discord, os, asyncio, time
+import discord, os, asyncio, time, random
 from discord.ext.commands import Bot
 from discord.ext import commands
 
@@ -19,10 +19,21 @@ def clog(*args):
 async def gameChanger():
     await client.wait_until_ready()
     while not client.is_closed:
-        for user in client.members:
-            if user.status != discord.Status.offline:
-                await client.change_presence(game=discord.Game(name="with " + user + "'s dick" , type=1))
-    await asyncio.sleep(10)
+        
+
+        activeServers = client.servers
+        memberList = []
+        
+        for s in activeServers:
+            for user in s.members:
+                if user.status != discord.Status.offline:
+                    memberList.append(user.display_name)
+                
+        ri = random.randint(0, len(memberList))
+        await client.change_presence(game=discord.Game(name="with " + memberList[ri] + "'s dick" , type=1))
+        
+        await asyncio.sleep(300)
+
     
 @client.event
 async def on_ready():
