@@ -2,76 +2,6 @@ import discord, os, asyncio, time, random
 from discord.ext.commands import Bot
 from discord.ext import commands
 
-
-
-Client = discord.Client()
-client= commands.Bot(command_prefix = "!")
-commands = ['Commands','Ping','Say','Nigger','Fuckmedaddy','Marino','Gay','Ieatass','Spoonys',  'Timeout','Mark']
-
-def clog(*args):
-    print(*args)
-    log = open("clog.txt", "a")
-    for arg in args:
-        log.write(str(arg))
-    log.write("\n")
-    log.close
-
-async def gameChanger():
-    await client.wait_until_ready()
-    while not client.is_closed:
-        
-
-        activeServers = client.servers
-        memberList = []
-        
-        for s in activeServers:
-            for user in s.members:
-                if user.status != discord.Status.offline:
-                    memberList.append(user.display_name)
-                
-        ri = random.randint(0, len(memberList))
-        try:
-            await client.change_presence(game=discord.Game(name="with " + memberList[ri] + "'s dick" , type=1))
-        except:
-            pass
-        
-        await asyncio.sleep(30)
-
-    
-@client.event
-async def on_ready():
-    clog("Bot is ready!")
-    clog('Logged in as')
-    clog(client.user.name)
-    clog(client.user.id)
-    clog('------')
-    await client.change_presence(game=discord.Game(name="with someone's dick", type=1))
-
-@client.event
-async def on_message(message):
-
-    userID = message.author.id
-    userName =  message.author.name
-
-    if message.author.name!="Rythm" and message.author.name!="PUBG-Tracker":
-        log = open("log.txt", "a")
-        log.write("#")
-        log.write(message.channel.name)
-        log.write(":")
-        log.write(userName)
-        log.write(":")
-        log.write(message.content[:])
-        log.write("\n")
-        log.close
-
-    if message.content[:(len('!COMMANDS')+1)].upper()=='!COMMANDS':
-        for command in commands:
-import discord, os, asyncio, time, random
-from discord.ext.commands import Bot
-from discord.ext import commands
-
-
-
 Client = discord.Client()
 client= commands.Bot(command_prefix = "!")
 commands = ['Commands','Ping','Say','Nigger','Fuckmedaddy','Marino','Gay','Ieatass','Spoonys',  'Timeout','Mark']
@@ -189,13 +119,6 @@ async def on_message(message):
             # clog("Cannot Timeout the Admin")
         # else:
             # clog("You dont have permission to timeout.")
-token = os.environ['TOKEN']
-
-client.loop.create_task(gameChanger())
-client.run(token)
-
-        else:
-            clog("You dont have permission to timeout.")
 token = os.environ['TOKEN']
 
 client.loop.create_task(gameChanger())
