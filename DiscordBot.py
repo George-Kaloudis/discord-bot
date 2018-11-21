@@ -49,6 +49,7 @@ async def on_ready():
 @client.command()
 async def square(number):
     squared_value = int(number) * int(number)
+    clog("Test True")
     await client.say(str(number) + " squared is " + str(squared_value))
 
     
