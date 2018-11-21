@@ -1,1 +1,1 @@
-Just a try for a Discord Bot
+Just a try for a Discord Bot.
