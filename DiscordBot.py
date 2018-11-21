@@ -26,9 +26,9 @@ async def gameChanger():
                 if user.status != discord.Status.offline:
                     memberList.append(user.display_name)
                 
-        ri = random.randint(0, len(memberList))
+       
         try:
-            await client.change_presence(game=discord.Game(name="with " + memberList[ri] + "'s dick" , type=1))
+            await client.change_presence(game=discord.Game(name="with " + random.choice(memberList) + "'s dick" , type=1))
         except:
             pass
         
