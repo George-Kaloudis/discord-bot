@@ -32,8 +32,8 @@ async def gameChanger():
         ri = random.randint(0, len(memberList))
         try:
             await client.change_presence(game=discord.Game(name="with " + memberList[ri] + "'s dick" , type=1))
-        expect(err):
-            clog(err)
+        except:
+            pass
         
         await asyncio.sleep(30)
 
