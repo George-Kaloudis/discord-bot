@@ -1,9 +1,7 @@
-import discord
+import discord, os, asyncio, time, datetime
 from discord.ext.commands import Bot
 from discord.ext import commands
-import os
-import asyncio
-import time
+
 
 
 Client = discord.Client()
@@ -18,6 +16,14 @@ def clog(*args):
     log.write("\n")
     log.close
 
+async def gameChanger():
+    await client.wait_until_ready()
+    while not client.is_closed:
+        for user in client.members:
+            if user.status != discord.Status.offline:
+                await client.change_presence(game=discord.Game(name="with " + user + "'s dick" , type=1))
+    await asyncio.sleep(600)
+    
 @client.event
 async def on_ready():
     clog("Bot is ready!")
@@ -25,7 +31,7 @@ async def on_ready():
     clog(client.user.name)
     clog(client.user.id)
     clog('------')
-    await client.change_presence(game=discord.Game(name="with spoonys dick", type=1))
+    await client.change_presence(game=discord.Game(name="with someones dick", type=1))
 
 @client.event
 async def on_message(message):
@@ -94,4 +100,6 @@ async def on_message(message):
         else:
             clog("You dont have permission to timeout.")
 token = os.environ['TOKEN']
+
+client.loop.create_task(gameChanger())
 client.run(token)
