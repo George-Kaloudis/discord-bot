@@ -2,7 +2,7 @@ import discord, os, asyncio, time, random
 from discord.ext.commands import Bot
 from discord.ext import commands
 
-client= commands.Bot(command_prefix ='!', description='A useful bot.')
+client=commands.Bot(command_prefix ='!', description='A useful bot.')
 
 if not discord.opus.is_loaded():
     # the 'opus' library here is opus.dll on windows
@@ -355,6 +355,7 @@ async def on_message(message):
             # clog("Cannot Timeout the Admin")
         # else:
             # clog("You dont have permission to timeout.")
+	await client.process_commands(message)
 token = os.environ['TOKEN']
 
 client.add_cog(Music(client))
