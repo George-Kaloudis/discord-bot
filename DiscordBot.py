@@ -286,9 +286,9 @@ async def on_ready():
     clog(client.user.name)
     clog(client.user.id)
     clog('------')
-	clog(platform.machine())
-	clog(platform.system())
-	clog(platform.platform())
+    clog(platform.machine())
+    clog(platform.system())
+    clog(platform.platform())
     await client.change_presence(game=discord.Game(name="with someone's dick", type=1))
 
 
