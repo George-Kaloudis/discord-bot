@@ -2,7 +2,6 @@ import discord, os, asyncio, time, random
 from discord.ext.commands import Bot
 from discord.ext import commands
 
-Client = discord.Client()
 client= commands.Bot(command_prefix = "!")
 
 def clog(*args):
