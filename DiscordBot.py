@@ -265,7 +265,7 @@ async def square(num : int):
 	
 @commands.command(pass_context=True)
 async def test(ctx):
-    emb=discord.Embed(description=ctx.message.author.mention + " " + ctx.message.author.name, color=0xdd10dd, timestamp=ctx.message.timestamp)
+    emb=discord.Embed(description=ctx.message.author.mention + " " + str(ctx.message.author), color=0xdd10dd, timestamp=ctx.message.timestamp)
     emb.set_author(name="Member Left", icon_url=ctx.message.author.avatar_url)
     emb.set_footer(text=("ID: " + str(ctx.message.author.id)))
     await client.say(embed=emb)
