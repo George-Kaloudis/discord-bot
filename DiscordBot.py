@@ -263,7 +263,7 @@ async def square(num : int):
 	
 @commands.command(pass_context=True)
 async def ssm(ctx):
-    await client.say(musicBot.get_voice_state(ctx.message.server))
+    await client.say(musicBot.get_voice_state(ctx.message.server).is_playing())
 	
 	
 async def gameChanger():
@@ -369,7 +369,7 @@ token = os.environ['TOKEN']
 
 client.add_command(square)
 client.add_command(ssm)
-musicBot = Music(client)
+
 client.add_cog(musicBot)
 client.loop.create_task(gameChanger())
 client.run(token)
