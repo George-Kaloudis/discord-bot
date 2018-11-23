@@ -316,13 +316,14 @@ async def gameChanger():
 		
 @client.event
 async def on_member_remove(member):
+    print("Member Left")
     ser = member.server
     channel = ser.default_channel
-	
+    ch = ser.get_channel("bot")
     emb=discord.Embed(description=member.mention + " " + str(member), color=0xdd10dd, timestamp=datetime.datetime.now())
     emb.set_author(name="Member Left", icon_url=member.avatar_url)
     emb.set_footer(text=("ID: " + str(member.id)))
-    await bot.send_message(channel, embed=emb)
+    await bot.send_message(ch, embed=emb)
     
 @client.event
 async def on_ready():
