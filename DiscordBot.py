@@ -258,8 +258,8 @@ def clog(*args):
     log.close
 	
 @commands.command(pass_context=True, no_pm=True)
-async def square(ctx,* , num):
-    await ctx.say(num**2)
+async def square(num : int):
+    await client.say(str(num**2))
 	
 	
 async def gameChanger():
