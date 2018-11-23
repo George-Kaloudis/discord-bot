@@ -266,16 +266,16 @@ async def square(num : int):
 @commands.command(pass_context=True)
 async def rr(ctx):
     rbullet = random.randint(0,6)
-    await client.say(ctx.message.author.name + " has rolled the barrel")
+    await client.say(ctx.message.author.display_name + " has rolled the barrel")
     await asyncio.sleep(1)
-    await client.say(ctx.message.author.name + " pulls the trigger..")
+    await client.say(ctx.message.author.display_name + " pulls the trigger..")
     await asyncio.sleep(1)
     rchamber = random.randint(0,6)
     if rchamber == rbullet:
-        await client.say("Suck dick."+str(rchamber)+ " " +str(rbullet))
+        await client.say("Suck dick.")
         await client.kick(ctx.message.author.id)
     else:
-        await client.say("Lucky motherfucker."+str(rchamber)+ " " +str(rbullet))
+        await client.say("Lucky motherfucker.")
     
 	
 @commands.command(pass_context=True)
