@@ -322,7 +322,7 @@ async def on_message(message):
     userID = message.author.id
     userName =  message.author.name
 
-    if message.author.name!="Rythm" and message.author.name!="PUBG-Tracker":
+    if message.author.name!="Rythm":
         log = open("logs\log.txt", "a")
         log.write("#")
         log.write(message.channel.name)
@@ -333,7 +333,7 @@ async def on_message(message):
         log.write("\n")
         log.close
 		
-        print(message.content[:])
+        print(message)
 		
 		
 
