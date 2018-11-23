@@ -256,7 +256,12 @@ def clog(*args):
         log.write(str(arg))
     log.write("\n")
     log.close
-
+	
+@commands.command(pass_context=True, no_pm=True)
+async def square(*, num):
+    await bot.say(num**2)
+	
+	
 async def gameChanger():
     await client.wait_until_ready()
     while not client.is_closed:
