@@ -257,7 +257,7 @@ def clog(*args):
     log.write("\n")
     log.close
 	
-@commands.command(pass_context=True, no_pm=True)
+@commands.command
 async def square(num : int):
     await client.say(str(int(num)**2))
 	
