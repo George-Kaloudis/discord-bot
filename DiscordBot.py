@@ -275,7 +275,7 @@ async def rr(ctx):
         await client.say("Suck dick."+str(rchamber)+ " " +str(rbullet))
         await client.kick(ctx.message.author.id)
     else:
-        await client,say("Lucky motherfucker."+str(rchamber)+ " " +str(rbullet))
+        await client.say("Lucky motherfucker."+str(rchamber)+ " " +str(rbullet))
     
 	
 @commands.command(pass_context=True)
