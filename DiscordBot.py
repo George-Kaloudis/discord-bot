@@ -264,6 +264,20 @@ async def square(num : int):
     await client.say(str(int(num)**2))
 	
 @commands.command(pass_context=True)
+async def rr(ctx):
+    rbullet = random.randint(0,6)
+    await client.say(ctx.author.id + " has rolled the barrel")
+    await asyncio.sleep(1)
+    await client.say(ctx.author.id + " pulls the trigger..")
+    await asyncio.sleep(1)
+    rchamber = random.randint(0,6)
+    if rchamber == rbullet:
+        await client.say("Suck dick.")
+		await client.kick(ctx.author.id)
+    
+    
+	
+@commands.command(pass_context=True)
 async def ssm(ctx):
     await client.say(musicBot.get_voice_state(ctx.message.server).is_playing())
 	
