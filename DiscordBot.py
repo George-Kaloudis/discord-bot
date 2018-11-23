@@ -3,6 +3,8 @@ from discord.ext.commands import Bot
 from discord.ext import commands
 
 client=commands.Bot(command_prefix ='!', description='A useful bot.')
+musicBot = Music(client)
+
 
 if not discord.opus.is_loaded():
     # the 'opus' library here is opus.dll on windows
