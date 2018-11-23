@@ -272,10 +272,10 @@ async def rr(ctx):
     await asyncio.sleep(1)
     rchamber = random.randint(0,6)
     if rchamber == rbullet:
-        await client.say("Suck dick.")
+        await client.say("Suck dick."+str(rchamber)+ " " +str(rbullet))
         await client.kick(ctx.message.author.id)
     else:
-        await client,say("Lucky motherfucker.")
+        await client,say("Lucky motherfucker."+str(rchamber)+ " " +str(rbullet))
     
 	
 @commands.command(pass_context=True)
