@@ -388,6 +388,7 @@ musicBot = Music(client)
 
 client.add_command(square)
 client.add_command(ssm)
+client.add_command(rr)
 
 client.add_cog(musicBot)
 client.loop.create_task(gameChanger())
