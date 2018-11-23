@@ -258,11 +258,7 @@ def clog(*args):
     log.close
 	
 @commands.command(pass_context=True, no_pm=True)
-<<<<<<< HEAD
 async def square(*, num):
-=======
-async def square(self, num):
->>>>>>> 941248d1be06c16afb5741dd3c3ce553e0cdf09c
     await bot.say(num**2)
 	
 	
