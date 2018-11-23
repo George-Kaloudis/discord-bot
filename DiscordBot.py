@@ -261,6 +261,10 @@ def clog(*args):
 async def square(num : int):
     await client.say(str(int(num)**2))
 	
+@commands.command(pass_context=True)
+async def ssm(ctx):
+    await client.say(musicBot.get_voice_state(ctx.server))
+	
 	
 async def gameChanger():
     await client.wait_until_ready()
@@ -291,7 +295,6 @@ async def on_ready():
     clog(client.user.name)
     clog(client.user.id)
     clog('------')
-    clog(musicBot.get_voice_state())
     await client.change_presence(game=discord.Game(name="with someone's dick", type=1))
 
 
