@@ -3,7 +3,7 @@ from discord.ext.commands import Bot
 from discord.ext import commands
 
 client=commands.Bot(command_prefix ='!', description='A useful bot.')
-musicBot = Music(client)
+
 
 
 if not discord.opus.is_loaded():
@@ -367,7 +367,10 @@ async def on_message(message):
         # else:
             # clog("You dont have permission to timeout.")
     await client.process_commands(message)
+	
+	
 token = os.environ['TOKEN']
+musicBot = Music(client)
 
 client.add_command(square)
 client.add_command(ssm)
