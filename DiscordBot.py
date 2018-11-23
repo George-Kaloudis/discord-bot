@@ -265,7 +265,7 @@ async def square(num : int):
 	
 @commands.command()
 async def test():
-    await client.say(discord.Embed(title="Abc", description="Abc"))
+    await client.say(discord.Embed(title="Abc", description="Abc"),embed=embed)
 	
 	
 @commands.command(pass_context=True)
