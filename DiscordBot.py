@@ -265,10 +265,9 @@ async def square(num : int):
 	
 @commands.command(pass_context=True)
 async def test(ctx):
-    emb=discord.Embed(title="Abc", description="Abc", color=0xdd10dd)
+    emb=discord.Embed(description=ctx.message.author.mention + " " + ctx.message.author.name, color=0xdd10dd)
     emb.set_author(name=ctx.message.author.display_name, icon_url=ctx.message.author.avatar_url)
-    emb.add_field(name="Field1", value="hi", inline=False)
-    emb.add_field(name="Field2", value="hi2", inline=False)
+    emb.set_footer(text="ID: " + ctx.message.author.id + " • " + ctx.message.edited_timestamp)
     await client.say(embed=emb)
 	
 	
