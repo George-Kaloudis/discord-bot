@@ -271,6 +271,7 @@ async def rr(ctx):
     await client.say(ctx.message.author.display_name + " pulls the trigger..")
     await asyncio.sleep(1)
     rchamber = random.randint(0,6)
+	clog(ctx.message.author.id)
     if rchamber == rbullet:
         await client.say("Suck dick.")
         await client.kick(ctx.message.author.id)
