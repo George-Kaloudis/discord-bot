@@ -306,16 +306,16 @@ async def on_message(message):
     userID = message.author.id
     userName =  message.author.name
 
-    # if message.author.name!="Rythm" and message.author.name!="PUBG-Tracker":
-        # log = open("log.txt", "a")
-        # log.write("#")
-        # log.write(message.channel.name)
-        # log.write(":")
-        # log.write(userName)
-        # log.write(":")
-        # log.write(message.content[:])
-        # log.write("\n")
-        # log.close
+    if message.author.name!="Rythm" and message.author.name!="PUBG-Tracker":
+        log = open("log.txt", "a")
+        log.write("#")
+        log.write(message.channel.name)
+        log.write(":")
+        log.write(userName)
+        log.write(":")
+        log.write(message.content[:])
+        log.write("\n")
+        log.close
 
     # if message.content[:(len('!COMMANDS')+1)].upper()=='!COMMANDS':
         # for command in commands:
@@ -370,7 +370,7 @@ async def on_message(message):
 	
 	
 token = os.environ['TOKEN']
-musicBot = Music(client)
+musicBot = Music(client)cd ..
 
 client.add_command(square)
 client.add_command(ssm)
