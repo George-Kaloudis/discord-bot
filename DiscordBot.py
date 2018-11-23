@@ -274,7 +274,7 @@ async def rr(ctx):
     clog(ctx.message.author.id)
     if rchamber == rbullet:
         await client.say("Suck dick.")
-        await client.kick(ctx.message.author.id)
+        await client.kick(ctx.message.author)
     else:
         await client.say("Lucky motherfucker.")
     
