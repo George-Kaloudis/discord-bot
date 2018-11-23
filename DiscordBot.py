@@ -266,9 +266,9 @@ async def square(num : int):
 @commands.command(pass_context=True)
 async def rr(ctx):
     rbullet = random.randint(0,6)
-    await client.say(ctx.message.author.id + " has rolled the barrel")
+    await client.say(ctx.message.author.name + " has rolled the barrel")
     await asyncio.sleep(1)
-    await client.say(ctx.message.author.id + " pulls the trigger..")
+    await client.say(ctx.message.author.name + " pulls the trigger..")
     await asyncio.sleep(1)
     rchamber = random.randint(0,6)
     if rchamber == rbullet:
