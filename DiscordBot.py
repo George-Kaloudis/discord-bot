@@ -1,4 +1,4 @@
-import discord, os, asyncio, time, random, youtube_dl
+import discord, os, asyncio, time, random, youtube_dl, datetime
 from discord.ext.commands import Bot
 from discord.ext import commands
 
@@ -313,6 +313,16 @@ async def gameChanger():
         
         await asyncio.sleep(30)
 
+		
+@client.event
+async def on_member_remove(member):
+    ser = member.server
+    channel = ser.default_channel
+	
+    emb=discord.Embed(description=member.mention + " " + str(member), color=0xdd10dd, timestamp=datetime.datetime)
+    emb.set_author(name="Member Left", icon_url=member.avatar_url)
+    emb.set_footer(text=("ID: " + str(member.id)))
+    await bot.send_message(channel, embed=emb)
     
 @client.event
 async def on_ready():
