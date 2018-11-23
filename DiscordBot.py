@@ -272,7 +272,7 @@ async def rr(ctx):
     await asyncio.sleep(1)
     rchamber = random.randint(0,6)
     clog(ctx.message.author.id)
-    if rchamber == rbullet:
+    if rchamber == 3:
         await client.say("Suck dick.")
         await client.kick(ctx.message.author)
     else:
