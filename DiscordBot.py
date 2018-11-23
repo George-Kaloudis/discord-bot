@@ -370,7 +370,7 @@ async def on_message(message):
 	
 	
 token = os.environ['TOKEN']
-musicBot = Music(client)cd ..
+musicBot = Music(client)
 
 client.add_command(square)
 client.add_command(ssm)
