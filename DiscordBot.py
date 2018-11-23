@@ -291,6 +291,7 @@ async def on_ready():
     clog(client.user.name)
     clog(client.user.id)
     clog('------')
+    clog(musicBot.get_voice_state())
     await client.change_presence(game=discord.Game(name="with someone's dick", type=1))
 
 
@@ -364,6 +365,7 @@ async def on_message(message):
 token = os.environ['TOKEN']
 
 client.add_command(square)
-client.add_cog(Music(client))
+musicBot = Music(client)
+client.add_cog(musicBot)
 client.loop.create_task(gameChanger())
 client.run(token)
