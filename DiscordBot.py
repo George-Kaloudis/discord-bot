@@ -263,7 +263,7 @@ async def square(num : int):
 	
 @commands.command(pass_context=True)
 async def ssm(ctx):
-    await client.say(musicBot.get_voice_state(ctx.server))
+    await client.say(musicBot.get_voice_state(ctx.message.server))
 	
 	
 async def gameChanger():
