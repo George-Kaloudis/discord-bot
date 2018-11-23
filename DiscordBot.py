@@ -363,6 +363,7 @@ async def on_message(message):
     await client.process_commands(message)
 token = os.environ['TOKEN']
 
+client.add_command(square)
 client.add_cog(Music(client))
 client.loop.create_task(gameChanger())
 client.run(token)
