@@ -253,7 +253,7 @@ class Music:
 
 def clog(*args):
     print(*args)
-    log = open("clog.txt", "a")
+    log = open("logs\clog.txt", "a")
     for arg in args:
         log.write(str(arg))
     log.write("\n")
@@ -307,7 +307,7 @@ async def on_message(message):
     userName =  message.author.name
 
     if message.author.name!="Rythm" and message.author.name!="PUBG-Tracker":
-        log = open("log.txt", "a")
+        log = open("logs\log.txt", "a")
         log.write("#")
         log.write(message.channel.name)
         log.write(":")
