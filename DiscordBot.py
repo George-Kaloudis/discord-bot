@@ -265,7 +265,10 @@ async def square(num : int):
 	
 @commands.command(pass_context=True)
 async def test(ctx):
-    await client.say(embed=discord.Embed(title="Abc", description="Abc"))
+    emb=discord.Embed(title="Abc", description="Abc", color=0x00ff00))
+    emb.add_field(name="Field1", value="hi", inline=False)
+    emb.add_field(name="Field2", value="hi2", inline=False)
+    await client.say(embed=emb)
 	
 	
 @commands.command(pass_context=True)
