@@ -273,7 +273,7 @@ async def rr(ctx):
     rchamber = random.randint(0,6)
     if rchamber == rbullet:
         await client.say("Suck dick.")
-		await client.kick(ctx.author.id)
+        await client.kick(ctx.author.id)
     
     
 	
