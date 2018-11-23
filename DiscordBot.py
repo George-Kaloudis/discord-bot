@@ -333,7 +333,7 @@ async def on_message(message):
         log.write("\n")
         log.close
 		
-        print(message)
+        print(message.content[:])
 		
 		
 
