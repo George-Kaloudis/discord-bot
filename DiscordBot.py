@@ -263,9 +263,9 @@ def clog(*args):
 async def square(num : int):
     await client.say(str(int(num)**2))
 	
-@commands.command()
-async def test():
-    await client.say(discord.Embed(title="Abc", description="Abc"),embed=embed)
+@commands.command(pass_context=True)
+async def test(ctx):
+    await client.say(embed=discord.Embed(title="Abc", description="Abc"))
 	
 	
 @commands.command(pass_context=True)
