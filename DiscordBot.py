@@ -333,15 +333,7 @@ async def on_message(message):
         log.write("\n")
         log.close
 		
-        clog = open("logs\clog.txt", "a")
-        clog.write("#")
-        clog.write(message.channel.name)
-        clog.write(":")
-        clog.write(userName)
-        clog.write(":")
-        clog.write(message.content[:])
-        clog.write("\n")
-        clog.close
+        print(message)
 		
 		
 
