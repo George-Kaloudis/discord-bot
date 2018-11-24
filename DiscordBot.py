@@ -324,11 +324,13 @@ async def on_member_remove(member):
     await client.send_message(ch, embed=emb)
     
 @client.event
-async def on_message_delete(message):
+async def on_raw_message_delete(channel_id, message_id):
+    ch = discord.get_channel(channel_id)
+    message = await client.get_message(channel, message_id)
+    print(message.content[:])
     if message.embeds==[]:
         member = message.author
         ser = member.server
-        ch = discord.utils.get(client.get_all_channels(), name='bot')
     
         emb=discord.Embed(description = "**Message sent by " + str(member.mention)  + "deleted in " + str(message.channel.mention) + "**\n" + message.content[:] , color=0xdd10dd, timestamp=datetime.datetime.now())
         emb.set_author(name=str(member), icon_url=member.avatar_url)
