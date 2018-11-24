@@ -276,7 +276,7 @@ async def rr(ctx):
     rchamber = random.randint(0,6)
     if rchamber == 3:
         await client.say("Suck dick.")
-        await asyncio.sleep(3)
+        await asyncio.sleep(2)
         await client.kick(ctx.message.author)
     else:
         await client.say("Lucky motherfucker.")
