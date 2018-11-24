@@ -287,7 +287,7 @@ async def rr(ctx):
 	
 @commands.command(pass_context=True)
 async def ssm(ctx):
-    val = musicBot.get_voice_state(ctx.message.server).is_playing())
+    val = musicBot.get_voice_state(ctx.message.server).is_playing()
     if val == False:
         server = ctx.message.server
         state = self.get_voice_state(server)
