@@ -339,39 +339,39 @@ async def on_member_join(member):
 async def on_member_remove(member):
     ser = member.server
     ch = findChannel(ser.channels, "bot")
-    emb = discord.Embed(description=member.mention + " " + str(member), color=0xdd10dd, timestamp=datetime.datetime.now())
-    if member.avatar_url!="":
-        emb.set_author(name="Member Left", icon_url=member.avatar_url)
+    emb = discord.Embed(description = member.mention + " " + str(member), color = 0xdd10dd, timestamp = datetime.datetime.now())
+    if member.avatar_url != "":
+        emb.set_author(name = "Member Left", icon_url = member.avatar_url)
     else:
-        emb.set_author(name="Member Left", icon_url=member.default_avatar_url)
-    emb.set_footer(text=("ID: " + str(member.id)))
-    await client.send_message(ch, embed=emb)
+        emb.set_author(name = "Member Left", icon_url = member.default_avatar_url)
+    emb.set_footer(text = ("ID: " + str(member.id)))
+    await client.send_message(ch, embed = emb)
     
 @client.event
 async def on_message_delete(message):
-    if message.embeds==[]:
+    if message.embeds == []:
         member = message.author
         ser = member.server
         ch = findChannel(ser.channels, "bot")
 	
-        emb=discord.Embed(description = "**Message sent by " + str(member.mention)  + "deleted in " + str(message.channel.mention) + "**\n" + message.content[:] , color=0xdd10dd, timestamp=datetime.datetime.now())
-        emb.set_author(name=str(member), icon_url=member.avatar_url)
-        emb.set_footer(text=("ID: " + str(member.id)))
-        await client.send_message(ch, embed=emb)
+        emb = discord.Embed(description = "**Message sent by " + str(member.mention)  + "deleted in " + str(message.channel.mention) + "**\n" + message.content[:] , color = 0xdd10dd, timestamp = datetime.datetime.now())
+        emb.set_author(name = str(member), icon_url = member.avatar_url)
+        emb.set_footer(text = ("ID: " + str(member.id)))
+        await client.send_message(ch, embed = emb)
 		
 @client.event
 async def on_message_edit(before, after):
-    if before.embeds==[]:
+    if before.embeds == []:
         member = before.author
         ser = member.server
         ch = findChannel(ser.channels, "bot")
 	
-        emb=discord.Embed(description = "**Message edited in " + str(before.channel.mention) + "**" , color=0xdd10dd, timestamp=datetime.datetime.now())
-        emb.add_field(name="Before", value=before.content[:], inline=False)
-        emb.add_field(name="After", value=after.content[:], inline=False)
-        emb.set_author(name=str(member), icon_url=member.avatar_url)
-        emb.set_footer(text=("ID: " + str(member.id)))
-        await client.send_message(ch, embed=emb)
+        emb = discord.Embed(description = "**Message edited in " + str(before.channel.mention) + "**" , color = 0xdd10dd, timestamp = datetime.datetime.now())
+        emb.add_field(name = "Before", value = before.content[:], inline = False)
+        emb.add_field(name = "After", value = after.content[:], inline = False)
+        emb.set_author(name = str(member), icon_url = member.avatar_url)
+        emb.set_footer(text = ("ID: " + str(member.id)))
+        await client.send_message(ch, embed = emb)
 
 @client.event
 async def on_member_update(before, after):
@@ -389,24 +389,24 @@ async def on_member_update(before, after):
         for rolea in aroles:
         
             if rolea not in broles:
-                emb=discord.Embed(description =  str(before.mention) + "**was given the " + str(rolea) + " role**" , color=0xdd10dd, timestamp=datetime.datetime.now())
+                emb = discord.Embed(description = str(before.mention) + "**was given the " + str(rolea) + " role**" , color = 0xdd10dd, timestamp = datetime.datetime.now())
                 emb.set_author(name=str(member), icon_url=member.avatar_url)
                 emb.set_footer(text=("ID: " + str(member.id)))
                 await client.send_message(ch, embed=emb)
                 
             if roleb not in aroles:
-                emb=discord.Embed(description =  str(before.mention) + "**was removed from the " + str(roleb) + " role**" , color=0xdd10dd, timestamp=datetime.datetime.now())
-                emb.set_author(name=str(member), icon_url=member.avatar_url)
-                emb.set_footer(text=("ID: " + str(member.id)))
-                await client.send_message(ch, embed=emb)
+                emb = discord.Embed(description =  str(before.mention) + "**was removed from the " + str(roleb) + " role**" , color = 0xdd10dd, timestamp = datetime.datetime.now())
+                emb.set_author(name = str(member), icon_url = member.avatar_url)
+                emb.set_footer(text = ("ID: " + str(member.id)))
+                await client.send_message(ch, embed = emb)
                 
     if bnick != anick:
-        emb=discord.Embed(description = str(member.mention) + " **nickname changed**" , color=0xdd10dd, timestamp=datetime.datetime.now())
-        emb.add_field(name="Before", value=bnick], inline=False)
-        emb.add_field(name="After", value=anick, inline=False)
-        emb.set_author(name=str(member), icon_url=member.avatar_url)
-        emb.set_footer(text=("ID: " + str(member.id)))
-        await client.send_message(ch, embed=emb)
+        emb = discord.Embed(description = str(member.mention) + " **nickname changed**" , color = 0xdd10dd, timestamp = datetime.datetime.now())
+        emb.add_field(name = "Before", value = bnick, inline = False)
+        emb.add_field(name = "After", value = anick, inline = False)
+        emb.set_author(name = str(member), icon_url = member.avatar_url)
+        emb.set_footer(text = ("ID: " + str(member.id)))
+        await client.send_message(ch, embed = emb)
     
 
 @client.event
@@ -424,8 +424,8 @@ async def on_message(message):
 
     userID = message.author.id
     userName =  message.author.name
-
-    if message.author.name!="Rythm":
+ 
+    if message.author.name != "Rythm":
         log = open("logs\log.txt", "a")
         log.write("#")
         log.write(message.channel.name)
