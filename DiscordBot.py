@@ -104,7 +104,7 @@ class Music:
                 await state.voice.disconnect()
             except:
                 pass
-        self.taskl.cancel()
+            self.taskl.cancel()
         else:
             await asyncio.sleep(10)
 
