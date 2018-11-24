@@ -90,7 +90,6 @@ class Music:
     async def stopAfter(self, ctx):
         while True:
             await asyncio.sleep(10)
-            print("started")
             val = self.get_voice_state(ctx.message.server).is_playing()
             if val == False:
                 server = ctx.message.server
@@ -305,27 +304,6 @@ async def rr(ctx):
         await client.kick(ctx.message.author)
     else:
         await client.say("Lucky motherfucker.")
-    
-	
-@commands.command(pass_context=True)
-async def ssm(ctx):
-    val = musicBot.get_voice_state(ctx.message.server).is_playing()
-    if val == False:
-        server = ctx.message.server
-        state = musicBot.get_voice_state(server)
-
-        if state.is_playing():
-            player = state.player
-            player.stop()
-
-        try:
-            state.audio_player.cancel()
-            del musicBot.voice_states[server.id]
-            await state.voice.disconnect()
-        except:
-            pass
-    else:
-        await asyncio.sleep(10)
 	
 	
 async def gameChanger():
@@ -473,7 +451,6 @@ async def on_message(message):
 token = os.environ['TOKEN']
 musicBot = Music(client)
 
-client.add_command(ssm)
 client.add_command(rr)
 
 client.add_cog(musicBot)
