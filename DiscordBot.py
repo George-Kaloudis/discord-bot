@@ -331,6 +331,10 @@ async def gameChanger():
 
 #---------------------------------------------------------------------------------------------------------------------------------------
 		
+        
+@client.event
+async def on_member_join(member):
+    return None
 @client.event
 async def on_member_remove(member):
     ser = member.server
@@ -374,20 +378,26 @@ async def on_member_update(before, after):
     member = before
     ser = member.server
     ch = findChannel(ser.channels, "bot")
+    
     broles = before.roles[1:]
     aroles = after.roles[1:]
+    
     for roleb in broles:
         for rolea in aroles:
+        
             if rolea not in broles:
                 emb=discord.Embed(description =  str(before.mention) + "**was given the " + str(rolea) + " role**" , color=0xdd10dd, timestamp=datetime.datetime.now())
                 emb.set_author(name=str(member), icon_url=member.avatar_url)
                 emb.set_footer(text=("ID: " + str(member.id)))
                 await client.send_message(ch, embed=emb)
+                
             if roleb not in aroles:
                 emb=discord.Embed(description =  str(before.mention) + "**was removed from the " + str(roleb) + " role**" , color=0xdd10dd, timestamp=datetime.datetime.now())
                 emb.set_author(name=str(member), icon_url=member.avatar_url)
                 emb.set_footer(text=("ID: " + str(member.id)))
                 await client.send_message(ch, embed=emb)
+                
+    print(before.nickname,after.nickname)
 
 @client.event
 async def on_ready():
