@@ -78,7 +78,6 @@ class Music:
     def __init__(self, bot):
         self.bot = bot
         self.voice_states = {}
-        self.taskl= None
 
     def get_voice_state(self, server):
         state = self.voice_states.get(server.id)
@@ -89,24 +88,25 @@ class Music:
         return state
 
     async def stopAfter(self, ctx):
-        print("started")
-        val = self.get_voice_state(ctx.message.server).is_playing()
-        if val == False:
-            server = ctx.message.server
-            state = self.get_voice_state(server)
+        while True:
+            print("started")
+            val = self.get_voice_state(ctx.message.server).is_playing()
+            if val == False:
+                server = ctx.message.server
+                state = self.get_voice_state(server)
 
-            if state.is_playing():
-                player = state.player
-                player.stop()
-            try:
-                state.audio_player.cancel()
-                del self.voice_states[server.id]
-                await state.voice.disconnect()
-            except:
-                pass
-            self.taskl.cancel()
-        else:
-            await asyncio.sleep(10)
+                if state.is_playing():
+                    player = state.player
+                    player.stop()
+                try:
+                    state.audio_player.cancel()
+                    del self.voice_states[server.id]
+                    await state.voice.disconnect()
+                except:
+                    pass
+                break
+            else:
+                time.sleep(10)
 
     async def create_voice_client(self, channel):
         voice = await self.bot.join_voice_channel(channel)
@@ -182,7 +182,7 @@ class Music:
             entry = VoiceEntry(ctx.message, player)
             await self.bot.say('Enqueued ' + str(entry))
             await state.songs.put(entry)
-            self.taskl = client.loop.create_task(self.stopAfter(ctx))
+            self.stopAfter(ctx)
 
     @commands.command(pass_context=True, no_pm=True)
     async def volume(self, ctx, value : int):
