@@ -89,6 +89,7 @@ class Music:
 
     async def stopAfter(self, ctx):
         while True:
+            await asyncio.sleep(10)
             print("started")
             val = self.get_voice_state(ctx.message.server).is_playing()
             if val == False:
@@ -105,8 +106,7 @@ class Music:
                 except:
                     pass
                 break
-            else:
-                time.sleep(10)
+                
 
     async def create_voice_client(self, channel):
         voice = await self.bot.join_voice_channel(channel)
