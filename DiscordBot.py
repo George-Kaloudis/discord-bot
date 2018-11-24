@@ -89,6 +89,7 @@ class Music:
         return state
 
     async def stopAfter(self, ctx):
+        print("started")
         val = self.get_voice_state(ctx.message.server).is_playing()
         if val == False:
             server = ctx.message.server
