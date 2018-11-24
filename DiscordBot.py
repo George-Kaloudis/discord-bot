@@ -181,7 +181,7 @@ class Music:
             entry = VoiceEntry(ctx.message, player)
             await self.bot.say('Enqueued ' + str(entry))
             await state.songs.put(entry)
-            await.stopAfter(ctx)
+            client.loop.create_task(self.stopAfter(ctx))
 
     @commands.command(pass_context=True, no_pm=True)
     async def volume(self, ctx, value : int):
