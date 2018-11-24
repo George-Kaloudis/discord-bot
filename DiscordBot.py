@@ -325,7 +325,7 @@ async def on_member_remove(member):
     
 @client.event
 async def on_message_delete(message):
-    if message.embeds=[]:
+    if message.embeds==[]:
         member = message.author
         ser = member.server
         ch = discord.utils.get(client.get_all_channels(), name='bot')
