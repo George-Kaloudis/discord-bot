@@ -328,7 +328,7 @@ async def on_message_delete(message):
 async def on_message_edit(before, after):
     member = before.author
     ser = member.server
-    ch = discord.utils.get(ser.get_all_channels(), name='bot')
+    ch = discord.utils.get(client.get_all_channels(), name='bot')
 	
     emb=discord.Embed(description = "**Message edited in " + str(message.channel.mention) + "**" , color=0xdd10dd, timestamp=datetime.datetime.now())
     emb.add_field(name="Before", value=before.content[:], inline=False)
