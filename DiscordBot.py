@@ -290,7 +290,7 @@ async def ssm(ctx):
     val = musicBot.get_voice_state(ctx.message.server).is_playing()
     if val == False:
         server = ctx.message.server
-        state = self.get_voice_state(server)
+        state = musicBot.get_voice_state(server)
 
         if state.is_playing():
             player = state.player
@@ -298,7 +298,7 @@ async def ssm(ctx):
 
         try:
             state.audio_player.cancel()
-            del self.voice_states[server.id]
+            del musicBot.voice_states[server.id]
             await state.voice.disconnect()
         except:
             pass
