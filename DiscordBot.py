@@ -231,9 +231,7 @@ class Music:
 
     @commands.command(pass_context=True, no_pm=True)
     async def skip(self, ctx):
-        """Vote to skip a song. The song requester can automatically skip.
-
-        3 skip votes are needed for the song to be skipped.
+        """Vote to skip a song.
         """
 
         state = self.get_voice_state(ctx.message.server)
@@ -293,6 +291,7 @@ def findChannel(ch, n):
 	
 @commands.command(pass_context=True)
 async def rr(ctx):
+    """Play Russian Roulette."""
     rbullet = random.randint(0,6)
     await client.say(ctx.message.author.display_name + " has rolled the barrel")
     await asyncio.sleep(1)
