@@ -307,7 +307,7 @@ async def gameChanger():
 async def on_member_remove(member):
     ser = member.server
     ch = discord.utils.get(client.get_all_channels(), name='bot')
-    emb=discord.Embed(description=member.mention + " " + str(member), color=0xdd10dd, timestamp=datetime.datetime.now())
+    emb = discord.Embed(description=member.mention + " " + str(member), color=0xdd10dd, timestamp=datetime.datetime.now())
     emb.set_author(name="Member Left", icon_url=member.avatar_url)
     emb.set_footer(text=("ID: " + str(member.id)))
     await client.send_message(ch, embed=emb)
@@ -323,6 +323,19 @@ async def on_message_delete(message):
         emb.set_author(name=str(member), icon_url=member.avatar_url)
         emb.set_footer(text=("ID: " + str(member.id)))
         await client.send_message(ch, embed=emb)
+		
+@client.event
+async def on_message_edit(before, after):
+    member = before.author
+    ser = member.server
+    ch = discord.utils.get(ser.get_all_channels(), name='bot')
+	
+    emb=discord.Embed(description = "**Message edited in " + str(message.channel.mention) + "**" , color=0xdd10dd, timestamp=datetime.datetime.now())
+    emb.add_field(name="Before", value=before.content[:], inline=False)
+    emb.add_field(name="After", value=after.content[:], inline=False)
+    emb.set_author(name=str(member), icon_url=member.avatar_url)
+    emb.set_footer(text=("ID: " + str(member.id)))
+    await client.send_message(ch, embed=emb)
 
 @client.event
 async def on_ready():
