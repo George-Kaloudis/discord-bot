@@ -289,6 +289,7 @@ def findChannel(ch, n):
             return channel
     return None			
 
+#---------------------------------------------------------------------------------------------------------------------------------------
 	
 @commands.command(pass_context=True)
 async def rr(ctx):
@@ -305,6 +306,7 @@ async def rr(ctx):
     else:
         await client.say("Lucky motherfucker.")
 	
+#---------------------------------------------------------------------------------------------------------------------------------------
 	
 async def gameChanger():
     await client.wait_until_ready()
@@ -327,6 +329,7 @@ async def gameChanger():
         
         await asyncio.sleep(30)
 
+#---------------------------------------------------------------------------------------------------------------------------------------
 		
 @client.event
 async def on_member_remove(member):
@@ -447,6 +450,7 @@ async def on_message(message):
             # clog("You dont have permission to timeout.")
     await client.process_commands(message)
 	
+#---------------------------------------------------------------------------------------------------------------------------------------
 	
 token = os.environ['TOKEN']
 musicBot = Music(client)
