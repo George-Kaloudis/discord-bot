@@ -325,6 +325,7 @@ async def on_member_remove(member):
     
 @client.event
 async def on_raw_message_delete(payload):
+    print("Message deleted")
     ch = discord.get_channel(payload.channel_id)
     message = await client.get_message(ch, payload.message_id)
     print(message.content[:])
