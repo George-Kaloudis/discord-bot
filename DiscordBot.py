@@ -384,7 +384,7 @@ async def on_member_update(before, after):
                 emb.set_footer(text=("ID: " + str(member.id)))
                 await client.send_message(ch, embed=emb)
             if roleb not in aroles:
-                emb=discord.Embed(description =  str(before.mention) + "**was removed from the " + str(rolea) + " role**" , color=0xdd10dd, timestamp=datetime.datetime.now())
+                emb=discord.Embed(description =  str(before.mention) + "**was removed from the " + str(roleb) + " role**" , color=0xdd10dd, timestamp=datetime.datetime.now())
                 emb.set_author(name=str(member), icon_url=member.avatar_url)
                 emb.set_footer(text=("ID: " + str(member.id)))
                 await client.send_message(ch, embed=emb)
