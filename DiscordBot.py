@@ -325,15 +325,15 @@ async def on_member_remove(member):
     
 @client.event
 async def on_message_delete(message):
-    member = message.author
-    ser = member.server
-    ch = discord.utils.get(client.get_all_channels(), name='bot')
-    #If embed no
-    print(message.embeds)
-    emb=discord.Embed(description = "**Message sent by " + str(member.mention)  + "deleted in " + str(message.channel.mention) + "**\n" + message.content[:] , color=0xdd10dd, timestamp=datetime.datetime.now())
-    emb.set_author(name=str(member), icon_url=member.avatar_url)
-    emb.set_footer(text=("ID: " + str(member.id)))
-    await client.send_message(ch, embed=emb)
+    if message.embeds=[]:
+        member = message.author
+        ser = member.server
+        ch = discord.utils.get(client.get_all_channels(), name='bot')
+    
+        emb=discord.Embed(description = "**Message sent by " + str(member.mention)  + "deleted in " + str(message.channel.mention) + "**\n" + message.content[:] , color=0xdd10dd, timestamp=datetime.datetime.now())
+        emb.set_author(name=str(member), icon_url=member.avatar_url)
+        emb.set_footer(text=("ID: " + str(member.id)))
+        await client.send_message(ch, embed=emb)
 
 @client.event
 async def on_ready():
