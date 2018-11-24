@@ -78,6 +78,7 @@ class Music:
     def __init__(self, bot):
         self.bot = bot
         self.voice_states = {}
+        self.taskl= None
 
     def get_voice_state(self, server):
         state = self.voice_states.get(server.id)
@@ -101,7 +102,7 @@ class Music:
                 state.audio_player.cancel()
                 del self.voice_states[server.id]
                 await state.voice.disconnect()
-                break
+                self.taskl.cancel()
             except:
                 pass
         else:
@@ -181,7 +182,7 @@ class Music:
             entry = VoiceEntry(ctx.message, player)
             await self.bot.say('Enqueued ' + str(entry))
             await state.songs.put(entry)
-            client.loop.create_task(self.stopAfter(ctx))
+            self.taskl = client.loop.create_task(self.stopAfter(ctx))
 
     @commands.command(pass_context=True, no_pm=True)
     async def volume(self, ctx, value : int):
