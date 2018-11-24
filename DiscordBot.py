@@ -324,6 +324,17 @@ async def on_member_remove(member):
     await client.send_message(ch, embed=emb)
     
 @client.event
+async def on_message_delete(message):
+    ser = member.server
+    ch = discord.utils.get(client.get_all_channels(), name='bot')
+    member = message.author
+	
+    emb=discord.Embed(title = "Message sent by " + member.mention+ "deleted in " + message.channel.mention , description=message.content[:], color=0xdd10dd, timestamp=datetime.datetime.now())
+    emb.set_author(name=str(member), icon_url=member.avatar_url)
+    emb.set_footer(text=("ID: " + str(member.id)))
+    await client.send_message(ch, embed=emb)
+
+@client.event
 async def on_ready():
     clog("Bot is ready!")
     clog('Logged in as')
