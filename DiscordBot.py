@@ -373,7 +373,7 @@ async def on_message_delete(message):
 		
 @client.event
 async def on_message_edit(before, after):
-    if before.embeds==[] && after.embeds:
+    if before.embeds==[] && after.embeds==[]:
         member = before.author
         ser = member.server
         ch = findChannel(ser.channels, "bot")
