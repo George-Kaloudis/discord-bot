@@ -259,6 +259,12 @@ def clog(*args):
     log.write("\n")
     log.close
 	
+def findChannel(ch, n):
+    for channel in ch:
+        if channel.name == n:
+            return channel
+    return None			
+
 	
 @commands.command(pass_context=True)
 async def rr(ctx):
@@ -306,7 +312,7 @@ async def gameChanger():
 @client.event
 async def on_member_remove(member):
     ser = member.server
-    ch = discord.utils.get(client.get_all_channels(), name='bot')
+    ch = findChannel(ser.channels, "bot")
     emb = discord.Embed(description=member.mention + " " + str(member), color=0xdd10dd, timestamp=datetime.datetime.now())
     emb.set_author(name="Member Left", icon_url=member.avatar_url)
     emb.set_footer(text=("ID: " + str(member.id)))
@@ -314,10 +320,11 @@ async def on_member_remove(member):
     
 @client.event
 async def on_message_delete(message):
+#message delete show on all servers
     if message.embeds==[]:
         member = message.author
         ser = member.server
-        ch = discord.utils.get(client.get_all_channels(), name='bot')
+        ch = findChannel(ser.channels, "bot")
 	
         emb=discord.Embed(description = "**Message sent by " + str(member.mention)  + "deleted in " + str(message.channel.mention) + "**\n" + message.content[:] , color=0xdd10dd, timestamp=datetime.datetime.now())
         emb.set_author(name=str(member), icon_url=member.avatar_url)
@@ -328,7 +335,7 @@ async def on_message_delete(message):
 async def on_message_edit(before, after):
     member = before.author
     ser = member.server
-    ch = discord.utils.get(client.get_all_channels(), name='bot')
+    ch = findChannel(ser.channels, "bot")
 	
     emb=discord.Embed(description = "**Message edited in " + str(before.channel.mention) + "**" , color=0xdd10dd, timestamp=datetime.datetime.now())
     emb.add_field(name="Before", value=before.content[:], inline=False)
