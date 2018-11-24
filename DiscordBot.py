@@ -325,9 +325,10 @@ async def on_member_remove(member):
     
 @client.event
 async def on_message_delete(message):
+    member = message.author
     ser = member.server
     ch = discord.utils.get(client.get_all_channels(), name='bot')
-    member = message.author
+    
 	
     emb=discord.Embed(title = "Message sent by " + member.mention+ "deleted in " + message.channel.mention , description=message.content[:], color=0xdd10dd, timestamp=datetime.datetime.now())
     emb.set_author(name=str(member), icon_url=member.avatar_url)
