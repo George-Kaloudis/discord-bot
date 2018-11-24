@@ -397,7 +397,7 @@ async def on_member_update(before, after):
                 emb.set_footer(text=("ID: " + str(member.id)))
                 await client.send_message(ch, embed=emb)
                 
-    print(before.nickname,after.nickname)
+    print(str(before.nick),str(after.nick))
 
 @client.event
 async def on_ready():
