@@ -64,7 +64,6 @@ class VoiceState:
         while True:
             self.play_next_song.clear()
             self.current = await self.songs.get()
-            print(str(self.songs))
             await self.bot.send_message(self.current.channel, 'Now playing ' + str(self.current))
             self.current.player.start()
             await self.play_next_song.wait()
@@ -288,7 +287,23 @@ async def rr(ctx):
 	
 @commands.command(pass_context=True)
 async def ssm(ctx):
-    await client.say(musicBot.get_voice_state(ctx.message.server).is_playing())
+    val = musicBot.get_voice_state(ctx.message.server).is_playing())
+    if val == False:
+        server = ctx.message.server
+        state = self.get_voice_state(server)
+
+        if state.is_playing():
+            player = state.player
+            player.stop()
+
+        try:
+            state.audio_player.cancel()
+            del self.voice_states[server.id]
+            await state.voice.disconnect()
+        except:
+            pass
+    else:
+        await asyncio.sleep(30)
 	
 	
 async def gameChanger():
