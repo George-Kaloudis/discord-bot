@@ -371,7 +371,21 @@ async def on_message_edit(before, after):
 
 @client.event
 async def on_member_update(before, after):
-    return None
+    member = before
+    ser = member.server
+    ch = findChannel(ser.channels, "bot")
+    for roleb in before.roles:
+        for rolea in after.roles:
+            if rolea not in before.roles:
+                emb=discord.Embed(description =  str(before.mention) + "**was given the " + str(rolea) + "role**" , color=0xdd10dd, timestamp=datetime.datetime.now())
+                emb.set_author(name=str(member), icon_url=member.avatar_url)
+                emb.set_footer(text=("ID: " + str(member.id)))
+                await client.send_message(ch, embed=emb)
+            if roleb not in after.roles:
+                emb=discord.Embed(description =  str(before.mention) + "**was removed from the " + str(rolea) + "role**" , color=0xdd10dd, timestamp=datetime.datetime.now())
+                emb.set_author(name=str(member), icon_url=member.avatar_url)
+                emb.set_footer(text=("ID: " + str(member.id)))
+                await client.send_message(ch, embed=emb)
 
 @client.event
 async def on_ready():
