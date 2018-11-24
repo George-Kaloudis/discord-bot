@@ -335,21 +335,27 @@ async def gameChanger():
 @client.event
 async def on_member_join(member):
     return None
+    
 @client.event
 async def on_member_remove(member):
     ser = member.server
     ch = findChannel(ser.channels, "bot")
     emb = discord.Embed(description = member.mention + " " + str(member), color = 0xdd10dd, timestamp = datetime.datetime.now())
+    
     if member.avatar_url != "":
         emb.set_author(name = "Member Left", icon_url = member.avatar_url)
     else:
         emb.set_author(name = "Member Left", icon_url = member.default_avatar_url)
+        
     emb.set_footer(text = ("ID: " + str(member.id)))
+    
     await client.send_message(ch, embed = emb)
     
 @client.event
 async def on_message_delete(message):
+
     if message.embeds == []:
+    
         member = message.author
         ser = member.server
         ch = findChannel(ser.channels, "bot")
@@ -357,11 +363,14 @@ async def on_message_delete(message):
         emb = discord.Embed(description = "**Message sent by " + str(member.mention)  + "deleted in " + str(message.channel.mention) + "**\n" + message.content[:] , color = 0xdd10dd, timestamp = datetime.datetime.now())
         emb.set_author(name = str(member), icon_url = member.avatar_url)
         emb.set_footer(text = ("ID: " + str(member.id)))
+        
         await client.send_message(ch, embed = emb)
 		
 @client.event
 async def on_message_edit(before, after):
+
     if before.embeds == []:
+    
         member = before.author
         ser = member.server
         ch = findChannel(ser.channels, "bot")
@@ -371,10 +380,12 @@ async def on_message_edit(before, after):
         emb.add_field(name = "After", value = after.content[:], inline = False)
         emb.set_author(name = str(member), icon_url = member.avatar_url)
         emb.set_footer(text = ("ID: " + str(member.id)))
+        
         await client.send_message(ch, embed = emb)
 
 @client.event
 async def on_member_update(before, after):
+
     member = before
     ser = member.server
     ch = findChannel(ser.channels, "bot")
@@ -392,12 +403,14 @@ async def on_member_update(before, after):
                 emb = discord.Embed(description = str(before.mention) + "**was given the " + str(rolea) + " role**" , color = 0xdd10dd, timestamp = datetime.datetime.now())
                 emb.set_author(name=str(member), icon_url=member.avatar_url)
                 emb.set_footer(text=("ID: " + str(member.id)))
+                
                 await client.send_message(ch, embed=emb)
                 
             if roleb not in aroles:
                 emb = discord.Embed(description =  str(before.mention) + "**was removed from the " + str(roleb) + " role**" , color = 0xdd10dd, timestamp = datetime.datetime.now())
                 emb.set_author(name = str(member), icon_url = member.avatar_url)
                 emb.set_footer(text = ("ID: " + str(member.id)))
+                
                 await client.send_message(ch, embed = emb)
                 
     if bnick != anick:
@@ -406,16 +419,19 @@ async def on_member_update(before, after):
         emb.add_field(name = "After", value = anick, inline = False)
         emb.set_author(name = str(member), icon_url = member.avatar_url)
         emb.set_footer(text = ("ID: " + str(member.id)))
+        
         await client.send_message(ch, embed = emb)
     
 
 @client.event
 async def on_ready():
+
     clog("Bot is ready!")
     clog('Logged in as')
     clog(client.user.name)
     clog(client.user.id)
     clog('------')
+    
     await client.change_presence(game=discord.Game(name="with someone's dick", type=1))
 
 
@@ -426,6 +442,7 @@ async def on_message(message):
     userName =  message.author.name
  
     if message.author.name != "Rythm":
+    
         log = open("logs\log.txt", "a")
         log.write("#")
         log.write(message.channel.name)
@@ -488,6 +505,7 @@ async def on_message(message):
             # clog("Cannot Timeout the Admin")
         # else:
             # clog("You dont have permission to timeout.")
+            
     await client.process_commands(message)
 	
 #---------------------------------------------------------------------------------------------------------------------------------------
