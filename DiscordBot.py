@@ -259,17 +259,6 @@ def clog(*args):
     log.write("\n")
     log.close
 	
-@commands.command()
-async def square(num : int):
-    await client.say(str(int(num)**2))
-	
-@commands.command(pass_context=True)
-async def test(ctx):
-    emb=discord.Embed(description=ctx.message.author.mention + " " + str(ctx.message.author), color=0xdd10dd, timestamp=ctx.message.timestamp)
-    emb.set_author(name="Member Left", icon_url=ctx.message.author.avatar_url)
-    emb.set_footer(text=("ID: " + str(ctx.message.author.id)))
-    await client.say(embed=emb)
-	
 	
 @commands.command(pass_context=True)
 async def rr(ctx):
@@ -420,10 +409,8 @@ async def on_message(message):
 token = os.environ['TOKEN']
 musicBot = Music(client)
 
-client.add_command(square)
 client.add_command(ssm)
 client.add_command(rr)
-client.add_command(test)
 
 client.add_cog(musicBot)
 client.loop.create_task(gameChanger())
