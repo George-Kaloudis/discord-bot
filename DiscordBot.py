@@ -98,13 +98,13 @@ class Music:
             if state.is_playing():
                 player = state.player
                 player.stop()
-                self.taskl.cancel()
             try:
                 state.audio_player.cancel()
                 del self.voice_states[server.id]
                 await state.voice.disconnect()
             except:
                 pass
+        self.taskl.cancel()
         else:
             await asyncio.sleep(10)
 
