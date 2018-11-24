@@ -88,24 +88,24 @@ class Music:
         return state
 
     async def stopAfter(self, ctx):
-    val = self.get_voice_state(ctx.message.server).is_playing()
-    if val == False:
-        server = ctx.message.server
-        state = self.get_voice_state(server)
+        val = self.get_voice_state(ctx.message.server).is_playing()
+        if val == False:
+            server = ctx.message.server
+            state = self.get_voice_state(server)
 
-        if state.is_playing():
-            player = state.player
-            player.stop()
+            if state.is_playing():
+                player = state.player
+                player.stop()
 
-        try:
-            state.audio_player.cancel()
-            del self.voice_states[server.id]
-            await state.voice.disconnect()
-			break
-        except:
-            pass
-    else:
-        await asyncio.sleep(10)
+            try:
+                state.audio_player.cancel()
+                del self.voice_states[server.id]
+                await state.voice.disconnect()
+			    break
+            except:
+                pass
+        else:
+            await asyncio.sleep(10)
 
     async def create_voice_client(self, channel):
         voice = await self.bot.join_voice_channel(channel)
