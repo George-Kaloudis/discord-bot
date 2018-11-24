@@ -324,9 +324,9 @@ async def on_member_remove(member):
     await client.send_message(ch, embed=emb)
     
 @client.event
-async def on_raw_message_delete(channel_id, message_id):
-    ch = discord.get_channel(channel_id)
-    message = await client.get_message(channel, message_id)
+async def on_raw_message_delete(payload):
+    ch = discord.get_channel(payload.channel_id)
+    message = await client.get_message(ch, payload.message_id)
     print(message.content[:])
     if message.embeds==[]:
         member = message.author
