@@ -382,6 +382,9 @@ async def on_member_update(before, after):
     broles = before.roles[1:]
     aroles = after.roles[1:]
     
+    bnick = str(before.nick)
+    anick = str(after.nick)
+    
     for roleb in broles:
         for rolea in aroles:
         
@@ -397,7 +400,14 @@ async def on_member_update(before, after):
                 emb.set_footer(text=("ID: " + str(member.id)))
                 await client.send_message(ch, embed=emb)
                 
-    print(str(before.nick),str(after.nick))
+    if bnick != anick:
+        emb=discord.Embed(description = str(member.mention) + " **nickname changed**" , color=0xdd10dd, timestamp=datetime.datetime.now())
+        emb.add_field(name="Before", value=bnick], inline=False)
+        emb.add_field(name="After", value=anick, inline=False)
+        emb.set_author(name=str(member), icon_url=member.avatar_url)
+        emb.set_footer(text=("ID: " + str(member.id)))
+        await client.send_message(ch, embed=emb)
+    
 
 @client.event
 async def on_ready():
