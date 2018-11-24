@@ -336,9 +336,11 @@ async def on_member_remove(member):
     ser = member.server
     ch = findChannel(ser.channels, "bot")
     emb = discord.Embed(description=member.mention + " " + str(member), color=0xdd10dd, timestamp=datetime.datetime.now())
-    emb.set_author(name="Member Left", icon_url=member.avatar_url)
+    if member.avatar_url!="":
+        emb.set_author(name="Member Left", icon_url=member.avatar_url)
+    else:
+        emb.set_author(name="Member Left", icon_url=member.default_avatar_url)
     emb.set_footer(text=("ID: " + str(member.id)))
-    print(type(member.avatar_url))
     await client.send_message(ch, embed=emb)
     
 @client.event
