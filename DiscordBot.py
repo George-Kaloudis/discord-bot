@@ -373,17 +373,16 @@ async def on_message_delete(message):
 		
 @client.event
 async def on_message_edit(before, after):
-    if (before.embeds==[] && after.embeds==[]):
-        member = before.author
-        ser = member.server
-        ch = findChannel(ser.channels, "bot")
+    member = before.author
+    ser = member.server
+    ch = findChannel(ser.channels, "bot")
 	
-        emb=discord.Embed(description = "**Message edited in " + str(before.channel.mention) + "**" , color=0xdd10dd, timestamp=datetime.datetime.now())
-        emb.add_field(name="Before", value=before.content[:], inline=False)
-        emb.add_field(name="After", value=after.content[:], inline=False)
-        emb.set_author(name=str(member), icon_url=member.avatar_url)
-        emb.set_footer(text=("ID: " + str(member.id)))
-        await client.send_message(ch, embed=emb)
+    emb=discord.Embed(description = "**Message edited in " + str(before.channel.mention) + "**" , color=0xdd10dd, timestamp=datetime.datetime.now())
+    emb.add_field(name="Before", value=before.content[:], inline=False)
+    emb.add_field(name="After", value=after.content[:], inline=False)
+    emb.set_author(name=str(member), icon_url=member.avatar_url)
+    emb.set_footer(text=("ID: " + str(member.id)))
+    await client.send_message(ch, embed=emb)
 
 @client.event
 async def on_member_update(before, after):
