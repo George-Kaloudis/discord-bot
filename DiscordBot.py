@@ -64,6 +64,7 @@ class VoiceState:
         while True:
             self.play_next_song.clear()
             self.current = await self.songs.get()
+			print(self.songs.get(), self.play_next_song)
             await self.bot.send_message(self.current.channel, 'Now playing ' + str(self.current))
             self.current.player.start()
             await self.play_next_song.wait()
@@ -223,6 +224,9 @@ class Music:
         voter = ctx.message.author
         if voter == state.current.requester:
             await self.bot.say('Requester requested skipping song...')
+            state.skip()
+        elif voter.server_permissions.administrator == True:
+            await self.bot.say('Admin requested skipping song...')
             state.skip()
         elif voter.id not in state.skip_votes:
             state.skip_votes.add(voter.id)
