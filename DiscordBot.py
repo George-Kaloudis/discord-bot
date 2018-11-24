@@ -320,7 +320,6 @@ async def on_member_remove(member):
     
 @client.event
 async def on_message_delete(message):
-#message delete show on all servers
     if message.embeds==[]:
         member = message.author
         ser = member.server
@@ -343,6 +342,10 @@ async def on_message_edit(before, after):
     emb.set_author(name=str(member), icon_url=member.avatar_url)
     emb.set_footer(text=("ID: " + str(member.id)))
     await client.send_message(ch, embed=emb)
+
+@client.event
+async def on_member_update(before, after):
+    return None
 
 @client.event
 async def on_ready():
