@@ -330,7 +330,7 @@ async def on_message_edit(before, after):
     ser = member.server
     ch = discord.utils.get(client.get_all_channels(), name='bot')
 	
-    emb=discord.Embed(description = "**Message edited in " + str(message.channel.mention) + "**" , color=0xdd10dd, timestamp=datetime.datetime.now())
+    emb=discord.Embed(description = "**Message edited in " + str(before.channel.mention) + "**" , color=0xdd10dd, timestamp=datetime.datetime.now())
     emb.add_field(name="Before", value=before.content[:], inline=False)
     emb.add_field(name="After", value=after.content[:], inline=False)
     emb.set_author(name=str(member), icon_url=member.avatar_url)
