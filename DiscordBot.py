@@ -322,7 +322,7 @@ async def gameChanger():
                 
        
         try:
-            await client.change_presence(game=discord.Game(name="with " + random.choice(memberList) + "'s dick"))
+            await client.change_presence(game=discord.Game(name="with " + random.choice(memberList) + "'s dick", type = 0))
         except:
             pass
         
@@ -431,7 +431,7 @@ async def on_ready():
     clog(client.user.id)
     clog('------')
     
-    await client.change_presence(game=discord.Game(name="with someone's dick"))
+    await client.change_presence(game=discord.Game(name="with someone's dick", type = 0))
 
 
 @client.event
