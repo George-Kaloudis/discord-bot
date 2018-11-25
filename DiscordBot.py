@@ -127,16 +127,6 @@ class Music:
         try:
             await self.create_voice_client(channel)
         except discord.ClientException:
-        
-            member = ctx.message.author
-            ser = member.server
-            ch = findChannel(ser.channels, "bot")
-	
-            emb = discord.Embed(description = "**Already in a voice channel.**" , color = 0xdd10dd, timestamp = datetime.datetime.now())
-            emb.set_author(name = str(bot.user.display_name), icon_url = bot.user.avatar_url)
-            emb.set_footer(text = ("ID: " + str(member.id)))
-        
-            await self.bot.say(embed = emb)
             await self.bot.say('Already in a voice channel...')
         except discord.InvalidArgument:
             await self.bot.say('This is not a voice channel...')
