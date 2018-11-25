@@ -368,7 +368,7 @@ async def on_message_delete(message):
 @client.event
 async def on_message_edit(before, after):
 
-    if before.embeds == []:
+    if before.embeds == [] && after.embeds == []:
     
         member = before.author
         ser = member.server
