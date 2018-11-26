@@ -89,7 +89,7 @@ class Music:
 
     async def stopAfter(self, ctx):
         while True:
-            await asyncio.sleep(10)
+            await asyncio.sleep(30)
             val = self.get_voice_state(ctx.message.server).is_playing()
             if val == False:
                 server = ctx.message.server
