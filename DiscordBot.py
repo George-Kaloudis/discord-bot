@@ -389,27 +389,42 @@ async def on_member_update(before, after):
     ser = member.server
     ch = findChannel(ser.channels, "bot")
     
-    broles = before.roles[:]
-    aroles = after.roles[:]
+    broles = before.roles[1:]
+    aroles = after.roles[1:]
     
     bnick = str(before.nick)
     anick = str(after.nick)
     
-    for roleb in broles:
-        for rolea in aroles:
-            if rolea not in broles:
-                emb = discord.Embed(description = str(before.mention) + "**was given the " + str(rolea) + " role**" , color = 0xdd10dd, timestamp = datetime.datetime.now())
-                emb.set_author(name=str(member), icon_url=member.avatar_url)
-                emb.set_footer(text=("ID: " + str(member.id)))
+    if str(before.roles[:1]) == "@everyone":
+        emb = discord.Embed(description = str(before.mention) + "**was given the " + str(after.roles[:1]) + " role**" , color = 0xdd10dd, timestamp = datetime.datetime.now())
+        emb.set_author(name=str(member), icon_url=member.avatar_url)
+        emb.set_footer(text=("ID: " + str(member.id)))
                 
-                await client.send_message(ch, embed=emb)
+        await client.send_message(ch, embed=emb)
+        
+    elif str(after.roles[:1]) == "@everyone":
+        emb = discord.Embed(description =  str(before.mention) + "**was removed from the " + str(before.roles[:1]) + " role**" , color = 0xdd10dd, timestamp = datetime.datetime.now())
+        emb.set_author(name = str(member), icon_url = member.avatar_url)
+        emb.set_footer(text = ("ID: " + str(member.id)))
                 
-            if roleb not in aroles:
-                emb = discord.Embed(description =  str(before.mention) + "**was removed from the " + str(roleb) + " role**" , color = 0xdd10dd, timestamp = datetime.datetime.now())
-                emb.set_author(name = str(member), icon_url = member.avatar_url)
-                emb.set_footer(text = ("ID: " + str(member.id)))
-                
-                await client.send_message(ch, embed = emb)
+        await client.send_message(ch, embed = emb)
+        
+    else:   
+        for roleb in broles:
+            for rolea in aroles:
+                if rolea not in broles:
+                    emb = discord.Embed(description = str(before.mention) + "**was given the " + str(rolea) + " role**" , color = 0xdd10dd, timestamp = datetime.datetime.now())
+                    emb.set_author(name=str(member), icon_url=member.avatar_url)
+                    emb.set_footer(text=("ID: " + str(member.id)))
+                    
+                    await client.send_message(ch, embed=emb)
+                    
+                if roleb not in aroles:
+                    emb = discord.Embed(description =  str(before.mention) + "**was removed from the " + str(roleb) + " role**" , color = 0xdd10dd, timestamp = datetime.datetime.now())
+                    emb.set_author(name = str(member), icon_url = member.avatar_url)
+                    emb.set_footer(text = ("ID: " + str(member.id)))
+                    
+                    await client.send_message(ch, embed = emb)
 
 
     if bnick != anick:
