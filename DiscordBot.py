@@ -271,14 +271,8 @@ class Music:
             
     @commands.command(pass_context=True, no_pm=True)
     async def fag(self, ctx,):
-        """Plays a song.
-
-        If there is a song currently in the queue, then it is
-        queued until the next song is done playing.
-
-        This command automatically searches as well from YouTube.
-        The list of supported sites can be found here:
-        https://rg3.github.io/youtube-dl/supportedsites.html
+        """Plays "Με θυμασαι ρε πούστη"
+       
         """
         state = self.get_voice_state(ctx.message.server)
         opts = {
@@ -299,7 +293,7 @@ class Music:
             fmt = 'An error occurred while processing this request: ```py\n{}: {}\n```'
             await self.bot.send_message(ctx.message.channel, fmt.format(type(e).__name__, e))
         else:
-            player.volume = 0.6
+            player.volume = 1
             entry = VoiceEntry(ctx.message, player)
             await self.bot.say('Enqueued ' + str(entry))
             await state.songs.put(entry)
@@ -431,14 +425,14 @@ async def on_member_update(before, after):
     bnick = str(before.nick)
     anick = str(after.nick)
     
-    if str(before.roles[:1]) == "@everyone":
+    if str(before.roles[0]) == "@everyone":
         emb = discord.Embed(description = str(before.mention) + "**was given the " + str(after.roles[:1]) + " role**" , color = 0xdd10dd, timestamp = datetime.datetime.now())
         emb.set_author(name=str(member), icon_url=member.avatar_url)
         emb.set_footer(text=("ID: " + str(member.id)))
                 
         await client.send_message(ch, embed=emb)
         
-    elif str(after.roles[:1]) == "@everyone":
+    elif str(after.roles[0]) == "@everyone":
         emb = discord.Embed(description =  str(before.mention) + "**was removed from the " + str(before.roles[:1]) + " role**" , color = 0xdd10dd, timestamp = datetime.datetime.now())
         emb.set_author(name = str(member), icon_url = member.avatar_url)
         emb.set_footer(text = ("ID: " + str(member.id)))
