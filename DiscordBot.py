@@ -269,7 +269,7 @@ class Music:
             await self.bot.say('Now playing {} [skips: {}/3]'.format(state.current, skip_count))
 			
             
-     @commands.command(pass_context=True, no_pm=True)
+    @commands.command(pass_context=True, no_pm=True)
     async def fag(self, ctx, *, song : str):
         """Plays a song.
 
