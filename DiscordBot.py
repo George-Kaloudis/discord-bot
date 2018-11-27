@@ -2,7 +2,7 @@ import discord, os, asyncio, time, random, youtube_dl, datetime
 from discord.ext.commands import Bot
 from discord.ext import commands
 
-client=commands.Bot(command_prefix ='!', description='A useful bot.')
+client=commands.Bot(command_prefix ='47!', description='A useful bot.')
 
 
 
