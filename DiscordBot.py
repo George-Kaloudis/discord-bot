@@ -389,15 +389,15 @@ async def on_member_update(before, after):
     ser = member.server
     ch = findChannel(ser.channels, "bot")
     
-    broles = before.roles[1:]
-    aroles = after.roles[1:]
+    broles = before.roles[:]
+    aroles = after.roles[:]
     
     bnick = str(before.nick)
     anick = str(after.nick)
     
     for roleb in broles:
         for rolea in aroles:
-        
+            print(str(rolea),str(roleb))
             if rolea not in broles:
                 emb = discord.Embed(description = str(before.mention) + "**was given the " + str(rolea) + " role**" , color = 0xdd10dd, timestamp = datetime.datetime.now())
                 emb.set_author(name=str(member), icon_url=member.avatar_url)
