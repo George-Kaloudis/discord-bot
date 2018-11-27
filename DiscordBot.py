@@ -397,7 +397,6 @@ async def on_member_update(before, after):
     
     for roleb in broles:
         for rolea in aroles:
-            print(str(rolea))
             if rolea not in broles:
                 emb = discord.Embed(description = str(before.mention) + "**was given the " + str(rolea) + " role**" , color = 0xdd10dd, timestamp = datetime.datetime.now())
                 emb.set_author(name=str(member), icon_url=member.avatar_url)
@@ -411,8 +410,8 @@ async def on_member_update(before, after):
                 emb.set_footer(text = ("ID: " + str(member.id)))
                 
                 await client.send_message(ch, embed = emb)
-        print("Before:")
-        print(str(roleb))
+
+
     if bnick != anick:
         emb = discord.Embed(description = str(member.mention) + " **nickname changed**" , color = 0xdd10dd, timestamp = datetime.datetime.now())
         emb.add_field(name = "Before", value = bnick, inline = False)
