@@ -270,7 +270,7 @@ class Music:
 			
             
     @commands.command(pass_context=True, no_pm=True)
-    async def fag(self, ctx, *, song : str):
+    async def fag(self, ctx,):
         """Plays a song.
 
         If there is a song currently in the queue, then it is
