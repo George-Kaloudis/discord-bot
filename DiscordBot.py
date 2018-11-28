@@ -302,7 +302,7 @@ class Music:
 	
 	
 
-
+ 
 def clog(*args):
     print(*args)
     log = open("logs\clog.txt", "a")
@@ -425,15 +425,15 @@ async def on_member_update(before, after):
     bnick = str(before.nick)
     anick = str(after.nick)
     
-    if str(before.roles[0]) == "@everyone":
-        emb = discord.Embed(description = str(before.mention) + "**was given the " + str(after.roles[:1]) + " role**" , color = 0xdd10dd, timestamp = datetime.datetime.now())
+    if str(before.roles[0]) == "@everyone" and str(after.roles[0]) != "@everyone":
+        emb = discord.Embed(description = str(before.mention) + "**was given the " + str(after.roles[0]) + " role**" , color = 0xdd10dd, timestamp = datetime.datetime.now())
         emb.set_author(name=str(member), icon_url=member.avatar_url)
         emb.set_footer(text=("ID: " + str(member.id)))
                 
         await client.send_message(ch, embed=emb)
         
-    elif str(after.roles[0]) == "@everyone":
-        emb = discord.Embed(description =  str(before.mention) + "**was removed from the " + str(before.roles[:1]) + " role**" , color = 0xdd10dd, timestamp = datetime.datetime.now())
+    elif str(after.roles[0]) == "@everyone" and str(before.roles[0]) != "@everyone":
+        emb = discord.Embed(description =  str(before.mention) + "**was removed from the " + str(before.roles[0]) + " role**" , color = 0xdd10dd, timestamp = datetime.datetime.now())
         emb.set_author(name = str(member), icon_url = member.avatar_url)
         emb.set_footer(text = ("ID: " + str(member.id)))
                 
