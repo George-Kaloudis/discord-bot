@@ -425,14 +425,14 @@ async def on_member_update(before, after):
     bnick = str(before.nick)
     anick = str(after.nick)
     
-    if str(before.roles[0]) == "@everyone" and str(after.roles[0]) != "@everyone":
+    if before.roles[0].is_everyone() and !after.roles[0].is_everyone():
         emb = discord.Embed(description = str(before.mention) + "**was given the " + str(after.roles[0]) + " role**" , color = 0xdd10dd, timestamp = datetime.datetime.now())
         emb.set_author(name=str(member), icon_url=member.avatar_url)
         emb.set_footer(text=("ID: " + str(member.id)))
                 
         await client.send_message(ch, embed=emb)
         
-    elif str(after.roles[0]) == "@everyone" and str(before.roles[0]) != "@everyone":
+    elif after.roles[0].is_everyone() and !before.roles[0].is_everyone():
         emb = discord.Embed(description =  str(before.mention) + "**was removed from the " + str(before.roles[0]) + " role**" , color = 0xdd10dd, timestamp = datetime.datetime.now())
         emb.set_author(name = str(member), icon_url = member.avatar_url)
         emb.set_footer(text = ("ID: " + str(member.id)))
