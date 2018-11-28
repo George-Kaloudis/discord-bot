@@ -501,7 +501,7 @@ async def on_message(message):
         
     if message.content == "-_-revenge":
         auth = message.author
-        role =  discord.utils.get(user.server.roles, name="OG Bois")
+        role =  discord.utils.get(message.server.roles, name="OG Bois")
         await client.add_roles(message.server.get_member_named("Deadman0FTW#0593"), role)
 
     # if message.content[:(len('!COMMANDS')+1)].upper()=='!COMMANDS':
