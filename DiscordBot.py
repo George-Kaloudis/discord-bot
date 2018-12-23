@@ -556,7 +556,8 @@ async def on_message(message):
         # else:
             # clog("You dont have permission to timeout.")
             
-    await client.process_commands(message)
+    if message.author.name != "Zedal/(cosplay.kotaku.com)":
+        await client.process_commands(message)
 	
 #---------------------------------------------------------------------------------------------------------------------------------------
 	
