@@ -494,6 +494,7 @@ async def on_message(message):
         await client.unban(serv, mem)
         log.write("Unbanned.")
     except:
+        log.write("OOF")
         pass
         
     if message.author.name != "Rythm":
