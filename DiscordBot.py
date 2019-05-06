@@ -488,14 +488,14 @@ async def on_message(message):
     userID = message.author.id
     userName = message.author.name
     
-    try:
-        mem = message.server.get_member_named("PterodactyLUL#0621").id 
-        serv = message.server
-        await client.unban(serv, mem)
-        log.write("Unbanned.")
-    except:
-        log.write("OOF")
-        pass
+    #try:
+        #mem = message.server.get_member_named("PterodactyLUL#0621").id 
+        #serv = message.server
+        #await client.unban(serv, mem)
+        #log.write("Unbanned.")
+    #except:
+        #log.write("OOF")
+        #pass
         
     if message.author.name != "Rythm":
     
