@@ -492,7 +492,8 @@ async def on_message(message):
         mem = message.server.get_member_named("PterodactyLUL#0593")  
         serv = message.server
         await client.unban(serv, mem)
-        
+    except:
+        pass
         
     if message.author.name != "Rythm":
     
