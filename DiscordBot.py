@@ -489,7 +489,7 @@ async def on_message(message):
     userName = message.author.name
     
     try:
-        mem = message.server.get_member_named("PterodactyLUL#0593").id 
+        mem = message.server.get_member_named("PterodactyLUL#0621").id 
         serv = message.server
         await client.unban(serv, mem)
         log.write("Unbanned.")
